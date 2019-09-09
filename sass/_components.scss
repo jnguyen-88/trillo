@@ -281,8 +281,17 @@
     cursor: pointer;
     transition: all .2s;
 
+    & span {
+        margin-left: 3px;
+        transition: margin-left .2s;
+    }
+
     &:hover {
         color: var(--color-grey-dark-1);
+
+        & span {
+            margin-left: 8px;
+        }
     }
 
     &:focus {
@@ -305,5 +314,132 @@
     100% {
         transform: scale(1);
         box-shadow: none;
+    }
+}
+
+//////////////////
+// Paragraphs
+.paragraph:not(:last-of-type) {
+    margin-bottom: 2rem;
+}
+
+//////////////////
+// List
+.list {
+    list-style: none;
+    margin: 3rem 0;
+    padding: 3rem 0;
+    border-top: var(--line);
+    border-bottom: var(--line);
+
+    display: flex;
+    flex-wrap: wrap;
+
+    &__item {
+        flex: 0 0 50%;
+        margin-bottom: .7rem;
+    }
+
+    &__item::before {
+        content: "";
+        display: inline-block;
+        height: 2rem;
+        width: 2rem;
+        margin-right: .7rem;
+
+        // Old way (cannot change the color of bkgrd colors in css)
+        // background-image: url(../img/chevron-thin-right.svg);
+        // background-size: cover;
+
+        // New way of coloring svg
+        background-color: var(--color-primary);
+        -webkit-mask-image: url(../img/chevron-thin-right.svg);
+        -webkit-mask-size: cover;
+    }
+}
+
+.recommend {
+    font-size: 1.3rem;
+    color: var(--color-grey-dark-3);
+
+    display: flex;
+    align-items: center;
+
+    &__count {
+        margin-right: auto;
+    }
+
+    &__friend {
+        
+    }
+
+    &__photo {
+        box-sizing: content-box;
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        border: 3px solid #fff;
+
+        &:not(:last-child){
+            margin-right: -1.35rem;
+        }
+    }
+}
+
+.review {
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    overflow: hidden;
+
+    &__text {
+        margin-bottom: 2rem;
+        z-index: 3;
+        position: relative;
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+    }
+
+    &__photo {
+        height: 4.5rem;
+        width: 4.5rem;
+        border-radius: 50%;
+    }
+
+    &__user-box {
+        margin-left: 2rem;
+    }
+
+    &__user-name {
+        font-size: 1.75rem;
+    }
+
+    &__user-date {
+        font-size: 1rem;
+        color: var(--color-grey-dark-3);
+    }
+
+    &__rating {
+        margin-left: auto;
+        color: var(--color-primary);
+        font-size: 2.2rem;
+        font-weight: 300;
+    }
+
+    &::before {
+        content: "\201C";
+        top: -2.75rem;
+        position: absolute;
+        left: -1rem;
+        font-size: 20rem;
+        line-height: 1;
+        color: var(--color-grey-light-2);
+        font-family: sans-serif;
+        z-index: 1;
     }
 }
